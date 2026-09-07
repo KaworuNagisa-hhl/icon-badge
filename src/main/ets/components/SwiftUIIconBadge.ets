@@ -1,7 +1,8 @@
-import { getSwiftUIGlassMaterial, getSwiftUIPalette, SWIFT_UI_RADIUS_CONTROL, swiftUIColorWithOpacity, SwiftUITone } from 'theme'
+import { getSwiftUIGlassMaterial, getSwiftUIPalette, SWIFT_UI_RADIUS_CONTROL, swiftUIColorWithOpacity, SwiftUIComponentConfig, SwiftUITone } from 'theme'
 
 @Component
 export struct SwiftUIIconBadge {
+  @Prop config: SwiftUIComponentConfig = new SwiftUIComponentConfig()
   @Prop icon: ResourceStr = ''
   @Prop color: ResourceColor = getSwiftUIPalette().primary
   @Prop tone: SwiftUITone = SwiftUITone.GlassBlack
@@ -14,12 +15,50 @@ export struct SwiftUIIconBadge {
   @Prop cornerRadius: number = SWIFT_UI_RADIUS_CONTROL
   @Prop textFontSize: number = 16
 
+  private resolvedTone(): SwiftUITone {
+    return this.config.tone === undefined ? this.tone : this.config.tone
+  }
+
+  private resolvedColor(): ResourceColor {
+    return this.config.color === undefined ? this.color : this.config.color
+  }
+
+  private resolvedWidth(): Length {
+    return this.config.width === undefined ? this.componentWidth : this.config.width
+  }
+
+  private resolvedHeight(): Length {
+    return this.config.height === undefined ? this.componentHeight : this.config.height
+  }
+
+  private resolvedFillColor(): ResourceColor {
+    return this.config.fillColor === undefined ? this.fillColor : this.config.fillColor
+  }
+
+  private resolvedCornerRadius(): number {
+    return this.config.cornerRadius === undefined ? this.cornerRadius : this.config.cornerRadius
+  }
+
+  private resolvedBorderWidth(): number {
+    return this.config.borderWidth === undefined ? this.customBorderWidth : this.config.borderWidth
+  }
+
+  private resolvedTextFontSize(): number {
+    return this.config.textFontSize === undefined ? this.textFontSize : this.config.textFontSize
+  }
+
   private resolvedTintColor(): ResourceColor {
-    return this.tintColor === '#00000000' ? getSwiftUIGlassMaterial(this.tone).tint : this.tintColor
+    if (this.config.tintColor) {
+      return this.config.tintColor
+    }
+    return this.tintColor === '#00000000' ? getSwiftUIGlassMaterial(this.resolvedTone()).tint : this.tintColor
   }
 
   private resolvedBorderColor(): ResourceColor {
-    return this.customBorderColor === '#00000000' ? swiftUIColorWithOpacity(this.color, 0.30) : this.customBorderColor
+    if (this.config.borderColor) {
+      return this.config.borderColor
+    }
+    return this.customBorderColor === '#00000000' ? swiftUIColorWithOpacity(this.resolvedColor(), 0.30) : this.customBorderColor
   }
 
   build() {
@@ -27,28 +66,28 @@ export struct SwiftUIIconBadge {
       Row()
         .width('100%')
         .height('100%')
-        .backgroundColor(this.fillColor)
+        .backgroundColor(this.resolvedFillColor())
         .linearGradient({
           direction: GradientDirection.RightBottom,
           colors: [
-            [this.fillColor, 0.0],
-            [swiftUIColorWithOpacity(this.color, 0.18), 0.66],
+            [this.resolvedFillColor(), 0.0],
+            [swiftUIColorWithOpacity(this.resolvedColor(), 0.18), 0.66],
             [this.resolvedTintColor(), 1.0]
           ]
         })
         .backgroundBlurStyle(BlurStyle.Thin)
-        .borderRadius(this.cornerRadius)
+        .borderRadius(this.resolvedCornerRadius())
 
       Text(this.icon)
-        .fontSize(this.textFontSize)
+        .fontSize(this.resolvedTextFontSize())
         .fontWeight(FontWeight.Bold)
-        .fontColor(this.color)
+        .fontColor(this.resolvedColor())
         .textAlign(TextAlign.Center)
     }
-    .width(this.componentWidth)
-    .height(this.componentHeight)
-    .borderRadius(this.cornerRadius)
-    .border({ width: this.customBorderWidth, color: this.resolvedBorderColor() })
-    .shadow({ radius: 8, color: swiftUIColorWithOpacity(this.color, 0.10), offsetX: 0, offsetY: 3 })
+    .width(this.resolvedWidth())
+    .height(this.resolvedHeight())
+    .borderRadius(this.resolvedCornerRadius())
+    .border({ width: this.resolvedBorderWidth(), color: this.resolvedBorderColor() })
+    .shadow({ radius: 8, color: swiftUIColorWithOpacity(this.resolvedColor(), 0.10), offsetX: 0, offsetY: 3 })
   }
 }
