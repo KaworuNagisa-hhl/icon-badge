@@ -63,17 +63,17 @@ SwiftUIIconBadge({
 ## SwiftUI 风格链式配置
 
 ```ts
-import { swiftUIConfig, SwiftUITone } from theme
+import { swiftUIConfig, SwiftUITone } from 'theme'
 
 const glassStyle = swiftUIConfig()
   .withTone(SwiftUITone.SystemGray)
-  .withWidth(92%)
-  .withHeight(auto)
+  .withWidth('92%')
+  .withHeight('auto')
   .withRadius(8)
-  .withFillColor(#E6111111)
-  .withTintColor(#22FFFFFF)
-  .withBorder(#33FFFFFF, 1)
-  .withShadow(#33000000, 16)
+  .withFillColor('#E6111111')
+  .withTintColor('#22FFFFFF')
+  .withBorder('#33FFFFFF', 1)
+  .withShadow('#33000000', 16)
   .withPadding(12)
 
 SwiftUIIconBadge({
@@ -82,6 +82,10 @@ SwiftUIIconBadge({
 ```
 
 `config` 是可选入口，适合复用一组 SwiftUI modifier 风格的外观配置；原有直接传参方式仍然可用，且业务可以继续通过 Builder 注入自定义内容。
+
+## 示例目录
+
+完整最小示例见 `example/SwiftUIIconBadgeUsage.ets`。该示例演示了图标文本、颜色和默认毛玻璃底色，适合列表左侧图标或状态入口。
 
 ## API
 
