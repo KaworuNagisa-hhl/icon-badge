@@ -1,0 +1,12 @@
+{
+  "module": {
+    "name": "icon_badge_test",
+    "type": "feature",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ],
+    "deliveryWithInstall": true,
+    "installationFree": false
+  }
+}

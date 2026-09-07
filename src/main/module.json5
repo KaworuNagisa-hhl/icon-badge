@@ -1,0 +1,9 @@
+{
+  "module": {
+    "name": "icon_badge",
+    "type": "har",
+    "deviceTypes": [
+      "default"
+    ]
+  }
+}
