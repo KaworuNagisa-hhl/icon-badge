@@ -14,16 +14,6 @@
 ohpm install icon-badge
 ```
 
-本地源码依赖：
-
-```json5
-{
-  "dependencies": {
-    "icon-badge": "file:../icon-badge",
-    "theme": "file:../theme"
-  }
-}
-```
 
 ## 正常使用样式
 
