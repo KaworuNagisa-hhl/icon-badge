@@ -1,4 +1,4 @@
-import { getSwiftUIGlassMaterial, getSwiftUIPalette, SWIFT_UI_RADIUS_CONTROL, swiftUIColorWithOpacity, SwiftUIComponentConfig, SwiftUITone } from 'theme'
+import { getSwiftUIGlassMaterial, getSwiftUIPalette, SWIFT_UI_RADIUS_CONTROL, swiftUIColorWithOpacity, SwiftUIComponentConfig, SwiftUITone } from '@kaworunagisa_hhl/theme'
 
 @Component
 export struct SwiftUIIconBadge {

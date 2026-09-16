@@ -1,4 +1,4 @@
-import { SwiftUIIconBadge } from 'icon-badge'
+import { SwiftUIIconBadge } from '@kaworunagisa_hhl/icon-badge'
 
 @Component
 export struct SwiftUIIconBadgeUsage {

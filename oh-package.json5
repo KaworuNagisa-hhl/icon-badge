@@ -1,6 +1,6 @@
 {
   "modelVersion": "6.0.2",
-  "name": "icon-badge",
+  "name": "@kaworunagisa_hhl/icon-badge",
   "version": "1.0.3",
   "description": "OpenHarmony/HarmonyOS ArkUI like-ios 图标徽标组件，适合功能入口、状态图标与小型视觉标识。提供 homepage、example 示例目录与清晰的 README 使用说明。",
   "main": "Index.ets",
@@ -13,10 +13,14 @@
     "HarmonyOS",
     "ArkUI",
     "like-ios",
-    "frosted-glass",
-    "component"
+    "ios-like",
+    "kaworunagisa_hhl",
+    "icon",
+    "badge",
+    "status",
+    "symbol"
   ],
   "dependencies": {
-    "theme": "file:../theme"
+    "@kaworunagisa_hhl/theme": "file:../theme"
   }
 }
