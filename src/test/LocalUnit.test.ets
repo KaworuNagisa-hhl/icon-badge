@@ -1,5 +1,5 @@
 import { describe, it, expect } from '@ohos/hypium'
-import { getSwiftUIGlassMaterial, swiftUIColorWithOpacity } from '@kaworunagisa_hhl/theme'
+import { getSwiftUIGlassMaterial, swiftUIColorWithOpacity } from 'theme'
 
 export default function localUnitTest() {
   describe('SwiftUIIconBadge', () => {
